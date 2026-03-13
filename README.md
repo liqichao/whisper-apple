@@ -20,8 +20,8 @@ brew install whisper-apple
 ### Build from Source / 从源码构建
 
 ```bash
-git clone https://github.com/liqichao/Whisper.git
-cd Whisper
+git clone https://github.com/liqichao/whisper-apple.git
+cd whisper-apple
 swift build -c release
 # The binary is at .build/release/whisper
 # Install to PATH:
