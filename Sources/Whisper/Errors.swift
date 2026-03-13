@@ -10,7 +10,7 @@ public enum WhisperError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .fileNotFound(let path):
-            "File not found: \(path)"
+            "File not found: \((path as NSString).lastPathComponent)"
         case .unsupportedFormat(let ext):
             "Unsupported audio format: \(ext)"
         case .conversionFailed(let reason):

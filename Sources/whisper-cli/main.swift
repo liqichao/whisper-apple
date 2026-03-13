@@ -27,11 +27,12 @@ struct WhisperCLI: AsyncParsableCommand {
         }
 
         do {
-            conversionResult = try AudioConverter.convert(fileAt: inputPath)
+            let conversion = try AudioConverter.convert(fileAt: inputPath)
+            conversionResult = conversion
 
             let speechLocale = locale.map { Locale(identifier: $0) }
             let result = try await Transcriber.transcribe(
-                audioURL: conversionResult!.url,
+                audioURL: conversion.url,
                 locale: speechLocale
             )
 
@@ -41,7 +42,7 @@ struct WhisperCLI: AsyncParsableCommand {
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
                 let data = try encoder.encode(result)
-                print(String(data: data, encoding: .utf8)!)
+                print(String(data: data, encoding: .utf8) ?? "")
             }
         } catch let error as WhisperError {
             outputError(error)
