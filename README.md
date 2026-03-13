@@ -4,6 +4,36 @@ Local speech-to-text CLI powered by Apple SpeechAnalyzer. Runs entirely offline 
 
 本地语音转文字命令行工具，基于 Apple SpeechAnalyzer，完全离线运行，无需云端 API。
 
+## Quick Setup for OpenClaw Users / OpenClaw 用户快速配置
+
+If you're running [OpenClaw](https://github.com/liqichao/OpenClaw), copy the prompt below and send it to your OpenClaw agent. It will install `whisper-apple` and configure itself to transcribe voice messages automatically.
+
+如果你正在使用 [OpenClaw](https://github.com/liqichao/OpenClaw)，复制下方的 prompt 发送给你的 OpenClaw agent，它会自动安装 `whisper-apple` 并配置好语音转文字功能。
+
+> **Prompt to send / 发送以下内容：**
+>
+> ```
+> Install the whisper-apple CLI for local speech-to-text:
+>
+> 1. Run: brew tap liqichao/tap && brew install whisper-apple
+> 2. Verify: whisper-apple --help
+> 3. Add the following to ~/.openclaw/openclaw.json under the "tools" key:
+>    "media": {
+>      "audio": {
+>        "enabled": true,
+>        "models": [
+>          {
+>            "type": "cli",
+>            "command": "whisper-apple",
+>            "args": ["--plain", "{{MediaPath}}"]
+>          }
+>        ],
+>        "timeoutSeconds": 60
+>      }
+>    }
+> If "tools" already has other keys (like "web"), merge "media" into it — do not overwrite existing entries.
+> ```
+
 ## Requirements / 系统要求
 
 - macOS 26+ (Tahoe)
