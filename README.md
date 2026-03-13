@@ -36,6 +36,7 @@ If you're running [OpenClaw](https://github.com/liqichao/OpenClaw), copy the pro
 
 ## Requirements / 系统要求
 
+- Apple Silicon (M1 or later / M1 及以上)
 - macOS 26+ (Tahoe)
 
 ## Installation / 安装
